@@ -1061,64 +1061,34 @@
 
     .airplane-anim.playing {
       display: block;
-      animation: planeFull 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      animation: planeFull 3.5s linear forwards;
     }
 
     @keyframes planeFull {
-      /* 오른쪽에서 등장 */
       0% {
-        top: 60%;
-        left: 110%;
-        transform: scale(0.12) rotate(-10deg);
+        top: 55%;
+        left: 105%;
+        transform: translate(-50%, -50%) scale(0.15);
         opacity: 0;
       }
-      5% {
-        opacity: 1;
-      }
-      /* 포물선 그리며 올라옴 */
-      22% {
-        top: 28%;
-        left: 70%;
-        transform: scale(0.5) rotate(-5deg);
-        opacity: 1;
-      }
-      38% {
-        top: 32%;
-        left: 52%;
-        transform: scale(0.9) rotate(2deg);
-        opacity: 1;
-      }
-      /* 중앙 도착 - 잠깐 머무름 */
-      48% {
-        top: 40%;
+      3% { opacity: 1; }
+      45% {
+        top: 38%;
         left: 50%;
-        transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
+        transform: translate(-50%, -50%) scale(1.1);
         opacity: 1;
       }
       55% {
         top: 40%;
         left: 50%;
-        transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
+        transform: translate(-50%, -50%) scale(1.1);
         opacity: 1;
       }
-      /* 문 안으로 쭈욱 빨려들어감 */
-      70% {
-        top: 42%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0.55) rotate(0deg);
-        opacity: 1;
-      }
-      85% {
-        top: 44%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0.15) rotate(0deg);
-        opacity: 1;
-      }
-      95% {
+      97% {
         top: 45%;
         left: 50%;
-        transform: translate(-50%, -50%) scale(0.03) rotate(0deg);
-        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
       }
       100% {
         top: 45%;
