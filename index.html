@@ -1364,14 +1364,16 @@
     // 경로선
     L.polyline([
       [11.6796, 122.3762],
+      [11.80, 122.15],
       [11.9246, 121.9536]
-    ], { color: '#e17055', weight: 3, dashArray: '8, 8', opacity: 0.7 }).addTo(routeMap)
-      .bindPopup('<span style="font-size:12px;">차량 이동 약 1.5시간</span>');
+    ], { color: '#e17055', weight: 5, opacity: 0.9 }).addTo(routeMap)
+      .bindPopup('<strong>구간 1</strong><br>칼리보 공항 → 카티클란 항구<br>차량 약 1.5시간');
     L.polyline([
       [11.9246, 121.9536],
+      [11.9450, 121.9400],
       [11.9658, 121.9250]
-    ], { color: '#1b6ca8', weight: 3, dashArray: '8, 8', opacity: 0.7 }).addTo(routeMap)
-      .bindPopup('<span style="font-size:12px;">보트 약 10분 + 육로 이동</span>');
+    ], { color: '#1b6ca8', weight: 5, opacity: 0.9 }).addTo(routeMap)
+      .bindPopup('<strong>구간 2</strong><br>카티클란 항구 → 헤난 팜비치<br>보트 10분 + 이동');
 
     // Ch2: 맛집
     createMap('food-map', [11.9640, 121.9248], 16, [
