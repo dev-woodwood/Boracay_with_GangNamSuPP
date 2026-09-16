@@ -1047,10 +1047,122 @@
       .lock-subtitle { font-size: 0.75rem; }
       .lock-icon { font-size: 1.8rem; }
       .pin-dot { width: 12px; height: 12px; }
+      .airplane-anim img { max-width: 180px; }
+      .parachute-anim img { max-width: 120px; }
+    }
+
+    /* ─── AIRPLANE ANIMATION ─── */
+    .airplane-anim {
+      position: fixed;
+      z-index: 10002;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.1);
+      opacity: 0;
+      pointer-events: none;
+      display: none;
+    }
+
+    .airplane-anim img {
+      max-width: 280px;
+      width: 100%;
+      height: auto;
+    }
+
+    .airplane-anim.phase-enter {
+      display: block;
+      animation: planeEnter 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .airplane-anim.phase-exit {
+      display: block;
+      animation: planeExit 1s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+    }
+
+    @keyframes planeEnter {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, 100%) scale(0.15);
+      }
+      60% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.05);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    @keyframes planeExit {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.2);
+      }
+    }
+
+    /* ─── PARACHUTE ANIMATION ─── */
+    .parachute-anim {
+      position: fixed;
+      z-index: 10002;
+      left: 75%;
+      top: -30%;
+      transform: translateX(-50%);
+      opacity: 0;
+      pointer-events: none;
+      display: none;
+    }
+
+    .parachute-anim img {
+      max-width: 160px;
+      width: 100%;
+      height: auto;
+    }
+
+    .parachute-anim.phase-fall {
+      display: block;
+      animation: parachuteFall 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+
+    @keyframes parachuteFall {
+      0% {
+        opacity: 0;
+        top: -20%;
+        transform: translateX(-50%) rotate(-8deg);
+      }
+      15% {
+        opacity: 1;
+      }
+      30% {
+        transform: translateX(-40%) rotate(5deg);
+      }
+      50% {
+        transform: translateX(-60%) rotate(-5deg);
+      }
+      70% {
+        transform: translateX(-45%) rotate(3deg);
+      }
+      100% {
+        opacity: 1;
+        top: 110%;
+        transform: translateX(-50%) rotate(0deg);
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- AIRPLANE & PARACHUTE ANIMATION -->
+  <div class="airplane-anim" id="airplane-anim">
+    <img src="비행기.png" alt="비행기">
+  </div>
+  <div class="parachute-anim" id="parachute-anim">
+    <img src="낙하산.png" alt="낙하산">
+  </div>
 
   <!-- LOCK SCREEN - DOOR -->
   <div class="lock-overlay" id="lock-screen">
@@ -1395,14 +1507,32 @@
           updateDots();
           if (input.length === 4) {
             if (input === code) {
+              // 1) 핀패드 숨기기
               setTimeout(function() {
                 document.getElementById('lock-content').style.opacity = '0';
                 document.getElementById('lock-content').style.pointerEvents = 'none';
-                lock.classList.add('unlocked');
+
+                // 2) 비행기 날아옴 (작게→크게)
+                var plane = document.getElementById('airplane-anim');
+                plane.classList.add('phase-enter');
+
+                // 3) 비행기 중앙 도착 후 → 낙하산 떨어지기 시작 + 문 열리기 + 비행기 문 안으로
                 setTimeout(function() {
-                  lock.classList.add('gone');
-                  document.getElementById('lock-content').style.display = 'none';
-                }, 1400);
+                  // 낙하산 떨어짐
+                  document.getElementById('parachute-anim').classList.add('phase-fall');
+                  // 문 열림
+                  lock.classList.add('unlocked');
+                  // 비행기 문 안으로 들어감 (작아지면서 사라짐)
+                  plane.classList.remove('phase-enter');
+                  plane.classList.add('phase-exit');
+
+                  // 4) 전부 정리
+                  setTimeout(function() {
+                    lock.classList.add('gone');
+                    document.getElementById('lock-content').style.display = 'none';
+                    plane.style.display = 'none';
+                  }, 2500);
+                }, 1300);
               }, 400);
             } else {
               showError();
