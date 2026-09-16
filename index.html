@@ -920,14 +920,17 @@
     /* 잠금 콘텐츠 (왼쪽 문에 배치) */
     .lock-content {
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       z-index: 10001;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 28px;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
     }
 
     .lock-overlay.unlocked .lock-content {
@@ -1036,10 +1039,13 @@
         opacity: 0;
         transition: transform 0.8s ease, opacity 0.8s ease;
       }
-      .pin-btn { width: 60px; height: 60px; font-size: 1.3rem; }
-      .pin-pad { gap: 12px; }
-      .lock-title { font-size: 1.1rem; }
-      .lock-icon { font-size: 2rem; }
+      .pin-btn { width: 56px; height: 56px; font-size: 1.2rem; }
+      .pin-pad { gap: 10px; }
+      .lock-content { gap: 14px; }
+      .lock-title { font-size: 1rem; }
+      .lock-subtitle { font-size: 0.75rem; }
+      .lock-icon { font-size: 1.8rem; }
+      .pin-dot { width: 12px; height: 12px; }
     }
   </style>
 </head>
