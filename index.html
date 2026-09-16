@@ -6,7 +6,10 @@
   <title>보라카이 with 강남수</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Pretendard+Variable&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
     :root {
       --sand: #f5e6d3;
@@ -33,7 +36,7 @@
     }
 
     body {
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif;
       color: var(--text);
       background: var(--sand-light);
       font-weight: 300;
@@ -59,7 +62,7 @@
     }
 
     .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 1.3rem;
       font-weight: 700;
       color: var(--ocean-deep);
@@ -101,7 +104,7 @@
     }
 
     .hero-eyebrow {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 1.1rem;
       font-style: italic;
       color: rgba(255, 255, 255, 0.7);
@@ -110,7 +113,7 @@
     }
 
     .hero-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: clamp(3.5rem, 10vw, 8rem);
       font-weight: 700;
       color: var(--white);
@@ -119,7 +122,7 @@
     }
 
     .hero-sub {
-      font-family: 'Noto Serif KR', serif;
+      font-family: 'Pretendard Variable', sans-serif;
       font-size: clamp(0.9rem, 2vw, 1.15rem);
       color: rgba(255, 255, 255, 0.85);
       margin-top: 24px;
@@ -147,7 +150,7 @@
     }
 
     .dday-text {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 1.3rem;
       color: var(--white);
       font-weight: 600;
@@ -172,7 +175,7 @@
     }
 
     .chapter-number {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 0.8rem;
       letter-spacing: 0.4em;
       text-transform: uppercase;
@@ -182,7 +185,7 @@
     }
 
     .chapter-title {
-      font-family: 'Noto Serif KR', serif;
+      font-family: 'Pretendard Variable', sans-serif;
       font-size: clamp(2rem, 5vw, 3.2rem);
       font-weight: 900;
       color: var(--ocean-deep);
@@ -190,7 +193,7 @@
     }
 
     .chapter-title em {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Outfit', sans-serif;
       font-style: italic;
       font-weight: 400;
       color: var(--ocean);
@@ -258,7 +261,7 @@
     }
 
     .flight-city {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 2.8rem;
       font-weight: 700;
       color: var(--ocean-deep);
@@ -303,7 +306,7 @@
     }
 
     .flight-time {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 1.4rem;
       font-weight: 700;
       color: var(--ocean-deep);
@@ -337,7 +340,7 @@
     }
 
     .info-value {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--ocean-deep);
@@ -367,7 +370,7 @@
     .activity-section { margin-bottom: 64px; }
 
     .activity-section-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 1.5rem;
       font-weight: 600;
       color: var(--ocean-deep);
@@ -411,7 +414,7 @@
     .badge--whale { background: rgba(27, 108, 168, 0.1); color: var(--ocean); }
 
     .activity-card-name {
-      font-family: 'Noto Serif KR', serif;
+      font-family: 'Pretendard Variable', sans-serif;
       font-size: 1.25rem;
       font-weight: 700;
       color: var(--ocean-deep);
@@ -425,7 +428,7 @@
     }
 
     .activity-card-price {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 1.6rem;
       font-weight: 700;
       color: var(--coral);
@@ -434,7 +437,7 @@
 
     .activity-card-price small {
       font-size: 0.75rem;
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif;
       color: var(--text-light);
       font-weight: 400;
     }
@@ -500,7 +503,7 @@
     }
 
     .etc-card-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 1.2rem;
       font-weight: 600;
       color: var(--ocean-deep);
@@ -559,7 +562,7 @@
     }
 
     .resort-name {
-      font-family: 'Noto Serif KR', serif;
+      font-family: 'Pretendard Variable', sans-serif;
       font-size: 1.2rem;
       font-weight: 700;
       color: var(--ocean-deep);
@@ -610,7 +613,7 @@
     }
 
     .resort-summary h3 {
-      font-family: 'Noto Serif KR', serif;
+      font-family: 'Pretendard Variable', sans-serif;
       font-size: 1.4rem;
       font-weight: 700;
       color: var(--ocean-deep);
@@ -673,7 +676,7 @@
     }
 
     .footer-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 2rem;
       font-weight: 700;
       color: var(--sand);
@@ -688,7 +691,7 @@
 
     .footer-date {
       margin-top: 24px;
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Outfit', sans-serif;
       font-size: 1.1rem;
       color: rgba(245, 230, 211, 0.6);
     }
@@ -705,6 +708,60 @@
       font-weight: 500;
     }
 
+    /* ─── MAP ─── */
+    .map-section {
+      margin-top: 48px;
+    }
+
+    .map-section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--ocean-deep);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(10, 61, 98, 0.08);
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .map-grid--single {
+      grid-template-columns: 1fr;
+    }
+
+    .map-card {
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(10, 61, 98, 0.04);
+    }
+
+    .map-card iframe {
+      width: 100%;
+      height: 280px;
+      border: none;
+      display: block;
+    }
+
+    .map-card-label {
+      padding: 14px 20px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .map-card-label small {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--text-light);
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
     /* ─── MOBILE ─── */
     @media (max-width: 768px) {
       .nav { padding: 0 20px; }
@@ -717,14 +774,264 @@
       .flight-card { padding: 28px; }
       .resort-summary, .opinion-box { padding: 32px; }
       .activity-cards { grid-template-columns: 1fr; }
+      .map-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 480px) {
       .resort-rec-grid { grid-template-columns: 1fr; }
     }
+
+    /* ─── LOCK SCREEN ─── */
+    .lock-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: auto;
+      perspective: 1800px;
+    }
+
+    .lock-overlay.unlocked {
+      pointer-events: none;
+    }
+
+    .lock-overlay.gone {
+      display: none;
+    }
+
+    /* 왼쪽 문 */
+    .door {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .door--left {
+      left: 0;
+      background: linear-gradient(180deg, #0a3d62 0%, #0e4d7a 50%, #0a3d62 100%);
+      transform-origin: left center;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .door--right {
+      right: 0;
+      background: linear-gradient(180deg, #0a3d62 0%, #0e4d7a 50%, #0a3d62 100%);
+      transform-origin: right center;
+      border-left: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .lock-overlay.unlocked .door--left {
+      transform: rotateY(-105deg);
+    }
+
+    .lock-overlay.unlocked .door--right {
+      transform: rotateY(105deg);
+    }
+
+    /* 문 패널 디테일 */
+    .door-panel {
+      position: absolute;
+      inset: 24px;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .door-panel-inner {
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(255,255,255,0.03);
+      border-radius: 2px;
+    }
+
+    /* 문 손잡이 */
+    .door-handle {
+      position: absolute;
+      top: 50%;
+      width: 8px;
+      height: 48px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0.08));
+      border-radius: 4px;
+      transform: translateY(-50%);
+    }
+
+    .door--left .door-handle {
+      right: 32px;
+    }
+
+    .door--right .door-handle {
+      left: 32px;
+    }
+
+    /* 잠금 콘텐츠 (왼쪽 문에 배치) */
+    .lock-content {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10001;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .lock-overlay.unlocked .lock-content {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .lock-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      color: var(--white);
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.6;
+      white-space: nowrap;
+    }
+
+    .lock-subtitle {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: -12px;
+    }
+
+    .lock-icon {
+      font-size: 2.5rem;
+      margin-bottom: -8px;
+    }
+
+    .pin-dots {
+      display: flex;
+      gap: 16px;
+    }
+
+    .pin-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.4);
+      background: transparent;
+      transition: all 0.15s ease;
+    }
+
+    .pin-dot.filled {
+      background: var(--white);
+      border-color: var(--white);
+    }
+
+    .pin-dot.error {
+      border-color: #e17055;
+      background: #e17055;
+    }
+
+    .pin-pad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .pin-btn {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+      color: var(--white);
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    .pin-btn:active {
+      background: rgba(255,255,255,0.15);
+    }
+
+    .pin-btn--empty {
+      border: none;
+      background: none;
+      cursor: default;
+    }
+
+    .pin-btn--del {
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 600px) {
+      .lock-content {
+        transform: translateX(0);
+      }
+      .door--right {
+        display: none;
+      }
+      .door--left {
+        width: 100%;
+        transform-origin: center center;
+      }
+      .lock-overlay.unlocked .door--left {
+        transform: scale(1.1);
+        opacity: 0;
+        transition: transform 0.8s ease, opacity 0.8s ease;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <!-- LOCK SCREEN - DOOR -->
+  <div class="lock-overlay" id="lock-screen">
+    <!-- 잠금 UI (문 위에 떠있음) -->
+    <div class="lock-content" id="lock-content">
+      <div class="lock-icon">&#x1F512;</div>
+      <div class="lock-title">보라카이로 떠나는 자<br>암호를 대라!</div>
+      <div class="lock-subtitle">출발 날짜 4자리를 입력하세요</div>
+      <div class="pin-dots" id="pin-dots">
+        <div class="pin-dot"></div>
+        <div class="pin-dot"></div>
+        <div class="pin-dot"></div>
+        <div class="pin-dot"></div>
+      </div>
+      <div class="pin-pad" id="pin-pad">
+        <button class="pin-btn" data-num="1">1</button>
+        <button class="pin-btn" data-num="2">2</button>
+        <button class="pin-btn" data-num="3">3</button>
+        <button class="pin-btn" data-num="4">4</button>
+        <button class="pin-btn" data-num="5">5</button>
+        <button class="pin-btn" data-num="6">6</button>
+        <button class="pin-btn" data-num="7">7</button>
+        <button class="pin-btn" data-num="8">8</button>
+        <button class="pin-btn" data-num="9">9</button>
+        <button class="pin-btn pin-btn--empty"></button>
+        <button class="pin-btn" data-num="0">0</button>
+        <button class="pin-btn pin-btn--del" id="pin-del">DEL</button>
+      </div>
+    </div>
+    <!-- 왼쪽 문 -->
+    <div class="door door--left">
+      <div class="door-panel"><div class="door-panel-inner"></div></div>
+      <div class="door-handle"></div>
+    </div>
+    <!-- 오른쪽 문 -->
+    <div class="door door--right">
+      <div class="door-panel"><div class="door-panel-inner"></div></div>
+      <div class="door-handle"></div>
+    </div>
+  </div>
 
   <!-- NAV -->
   <nav class="nav">
@@ -839,6 +1146,14 @@
         칼리보 공항 → 항구 → 보라카이 섬 → 숙소 순서로 이동해야 하기 때문에<br>
         도착 후 숙소까지 이동 시간이 상당히 소요됩니다. 넉넉한 마음으로 출발!
       </div>
+
+      <div class="map-section">
+        <div class="map-section-title">이동 경로</div>
+        <div class="map-card">
+          <div id="route-map" style="width:100%;height:400px;"></div>
+          <div class="map-card-label">칼리보 공항 → 카티클란 항구 → 보라카이 섬<small>공항에서 숙소까지 이동 경로</small></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -912,6 +1227,14 @@
           </div>
         </div>
       </div>
+
+      <div class="map-section">
+        <div class="map-section-title">맛집 위치</div>
+        <div class="map-card">
+          <div id="food-map" style="width:100%;height:350px;"></div>
+          <div class="map-card-label">사바비 레스토랑<small>현지 로컬 맛집</small></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -920,117 +1243,31 @@
     <div class="container">
       <div class="chapter-header">
         <div class="chapter-number">Chapter 03</div>
-        <h2 class="chapter-title">숙소를<br><em>골라봅시다</em></h2>
+        <h2 class="chapter-title">우리 숙소<br><em>Henann Palm Beach</em></h2>
         <div class="chapter-line"></div>
       </div>
 
-      <div class="resort-grid">
-        <div class="resort-card">
-          <div class="resort-name">헤난 크리스탈 샌즈</div>
-          <ul class="resort-features">
-            <li>헤난 리조트 중 가장 비쌈</li>
-            <li>화이트 비치가 보이는 인피니트 풀</li>
-          </ul>
-          <span class="resort-tag">Premium</span>
-        </div>
-        <div class="resort-card">
-          <div class="resort-name">헤난 리젠시</div>
-          <ul class="resort-features">
-            <li>크리스탈 가격만큼 비싼 곳</li>
-            <li>화이트비치 / 디몰 접근성 좋음</li>
-            <li>해변 다이렉트 접근</li>
-          </ul>
-          <span class="resort-tag">Beach Direct</span>
-        </div>
-        <div class="resort-card resort-card--pick">
-          <div class="resort-name">헤난 팜비치</div>
-          <ul class="resort-features">
-            <li>비교적 최근에 지어짐</li>
-            <li>크리스탈 샌즈 다음 화이트비치 인피니트 풀 보유</li>
-            <li>위치 / 수영장 / 해변 균형 Good</li>
-            <li>크리스탈 샌즈 대안으로 최적</li>
-            <li>해변 다이렉트 접근</li>
-          </ul>
-          <span class="resort-tag">Balanced Pick</span>
-        </div>
-        <div class="resort-card resort-card--pick">
-          <div class="resort-name">헤난 가든</div>
-          <ul class="resort-features">
-            <li>한국인들이 가장 많이 가는 숙소 (김치 있음)</li>
-            <li>수영장 넓고 깨끗, 발코니 이쁨</li>
-            <li>해변 전용 접근로 있음</li>
-          </ul>
-          <span class="resort-tag">Most Popular</span>
-        </div>
-        <div class="resort-card">
-          <div class="resort-name">헤난 파크</div>
-          <ul class="resort-features">
-            <li>가장 최근에 지어진 리조트</li>
-            <li>디몰 + 화이트 비치 접근성 애매</li>
-            <li>수영장 아쉽다는 의견</li>
-          </ul>
-          <span class="resort-tag">Newest</span>
-        </div>
-        <div class="resort-card">
-          <div class="resort-name">헤난 라군</div>
-          <ul class="resort-features">
-            <li>커플들이 가장 많이 가는 숙소</li>
-            <li>거대한 라군 수영장</li>
-          </ul>
-          <span class="resort-tag">Lagoon Pool</span>
-        </div>
+      <div class="resort-card resort-card--pick" style="max-width:680px;margin:0 auto 48px;">
+        <div class="resort-name" style="font-size:1.4rem;">헤난 팜비치 리조트</div>
+        <ul class="resort-features">
+          <li>비교적 최근에 지어짐</li>
+          <li>크리스탈 샌즈 다음 화이트비치 인피니트 풀 보유</li>
+          <li>위치 / 수영장 / 해변 균형 Good</li>
+          <li>크리스탈 샌즈 대안으로 최적</li>
+          <li>해변 다이렉트 접근</li>
+        </ul>
+        <span class="resort-tag" style="background:var(--emerald);color:#fff;">CONFIRMED</span>
       </div>
 
-      <div class="resort-summary">
-        <h3>그래서 어떤 헤난을 가면 좋은 것인가?</h3>
-        <div class="resort-rec-grid">
-          <div class="resort-rec-item">
-            <div>
-              <div class="criteria">위치 최우선</div>
-              <div class="pick-name">팜비치 / 크리스탈 샌즈</div>
-            </div>
-          </div>
-          <div class="resort-rec-item">
-            <div>
-              <div class="criteria">비치 + 풀 + 균형</div>
-              <div class="pick-name">팜비치</div>
-            </div>
-          </div>
-          <div class="resort-rec-item">
-            <div>
-              <div class="criteria">예쁜 수영장 & 사진</div>
-              <div class="pick-name">크리스탈 샌즈</div>
-            </div>
-          </div>
-          <div class="resort-rec-item">
-            <div>
-              <div class="criteria">조용한 휴양</div>
-              <div class="pick-name">프라임 비치</div>
-            </div>
-          </div>
-          <div class="resort-rec-item">
-            <div>
-              <div class="criteria">가족여행 + 대형</div>
-              <div class="pick-name">리젠시</div>
-            </div>
-          </div>
-          <div class="resort-rec-item">
-            <div>
-              <div class="criteria">수영장 최우선</div>
-              <div class="pick-name">라군 / 가든</div>
-            </div>
+      <div class="map-section">
+        <div class="map-section-title">숙소 & 주요 스팟 전체 지도</div>
+        <div class="map-card">
+          <div id="resort-map" style="width:100%;height:480px;"></div>
+          <div class="map-card-label">
+            헤난 팜비치 + 디몰 · 화이트비치 · 사바비 레스토랑
+            <small>핀을 클릭하면 상세 정보를 볼 수 있습니다</small>
           </div>
         </div>
-      </div>
-
-      <div class="opinion-box">
-        <div class="label">My Opinion</div>
-        <p>
-          크리스탈 샌즈가 마음 속 1순위지만 가격 생각하면 디몰이랑 거리감이 있어도
-          <strong>팜비치</strong>로 가고 싶고, 가장 무난하게 많이 가는 게
-          <strong>헤난 가든</strong>이라고 하니 —
-          나는 <strong>팜비치 아니면 가든</strong>을 선택하겠음.
-        </p>
       </div>
     </div>
   </section>
@@ -1043,6 +1280,101 @@
   </footer>
 
   <script>
+    // Lock screen
+    (function() {
+      var code = '1128';
+      var input = '';
+      var dots = document.querySelectorAll('#pin-dots .pin-dot');
+      var lock = document.getElementById('lock-screen');
+
+      function updateDots() {
+        dots.forEach(function(d, i) {
+          d.className = 'pin-dot' + (i < input.length ? ' filled' : '');
+        });
+      }
+
+      function showError() {
+        dots.forEach(function(d) { d.className = 'pin-dot error'; });
+        setTimeout(function() {
+          input = '';
+          updateDots();
+        }, 500);
+      }
+
+      document.getElementById('pin-pad').addEventListener('click', function(e) {
+        var btn = e.target.closest('.pin-btn');
+        if (!btn) return;
+        var num = btn.getAttribute('data-num');
+        if (num !== null && input.length < 4) {
+          input += num;
+          updateDots();
+          if (input.length === 4) {
+            if (input === code) {
+              setTimeout(function() {
+                document.getElementById('lock-content').style.opacity = '0';
+                document.getElementById('lock-content').style.pointerEvents = 'none';
+                lock.classList.add('unlocked');
+                setTimeout(function() {
+                  lock.classList.add('gone');
+                  document.getElementById('lock-content').style.display = 'none';
+                }, 1400);
+              }, 400);
+            } else {
+              showError();
+            }
+          }
+        }
+      });
+
+      document.getElementById('pin-del').addEventListener('click', function() {
+        if (input.length > 0) {
+          input = input.slice(0, -1);
+          updateDots();
+        }
+      });
+    })();
+
+    // Helper: create a Leaflet map with pins
+    function createMap(id, center, zoom, pins) {
+      var map = L.map(id).setView(center, zoom);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap',
+        maxZoom: 19
+      }).addTo(map);
+      pins.forEach(function(p) {
+        var icon = L.divIcon({
+          className: '',
+          html: '<div style="background:' + p.color + ';width:14px;height:14px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>',
+          iconSize: [14, 14],
+          iconAnchor: [7, 7]
+        });
+        L.marker([p.lat, p.lng], { icon: icon })
+          .addTo(map)
+          .bindPopup('<strong style="font-size:14px;">' + p.name + '</strong><br><span style="font-size:12px;color:#636e72;">' + p.desc + '</span>');
+      });
+      return map;
+    }
+
+    // Ch1: 이동 경로
+    createMap('route-map', [11.7, 122.0], 10, [
+      { lat: 11.6796, lng: 122.3762, name: '칼리보 국제공항 (KLO)', desc: '인천에서 약 4시간', color: '#e17055' },
+      { lat: 11.9246, lng: 121.9536, name: '카티클란 항구', desc: '칼리보에서 약 1.5시간', color: '#f39c12' },
+      { lat: 11.9674, lng: 121.9250, name: '보라카이 섬', desc: '항구에서 보트 10분', color: '#0d9b76' }
+    ]);
+
+    // Ch2: 맛집
+    createMap('food-map', [11.9640, 121.9248], 16, [
+      { lat: 11.9640, lng: 121.9248, name: '사바비 레스토랑', desc: '현지 로컬 맛집', color: '#e17055' }
+    ]);
+
+    // Ch3: 숙소 & 주요 스팟
+    createMap('resort-map', [11.9640, 121.9248], 15, [
+      { lat: 11.9658, lng: 121.9250, name: '헤난 팜비치', desc: 'CONFIRMED · 우리 숙소', color: '#0d9b76' },
+      { lat: 11.9648, lng: 121.9253, name: '디몰 (D\'Mall)', desc: '쇼핑/식당 거리', color: '#1b6ca8' },
+      { lat: 11.9620, lng: 121.9235, name: '화이트 비치', desc: '보라카이 대표 해변', color: '#1b6ca8' },
+      { lat: 11.9640, lng: 121.9248, name: '사바비 레스토랑', desc: '현지 로컬 맛집', color: '#f39c12' }
+    ]);
+
     // D-Day counter
     (function() {
       const target = new Date('2026-11-28T09:20:00+09:00');
