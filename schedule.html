@@ -303,13 +303,58 @@
       color: var(--sand);
     }
 
+    /* BOTTOM TABS */
+    .bottom-tabs {
+      display: none;
+    }
+
     /* MOBILE */
     @media (max-width: 768px) {
+      body { padding-bottom: 72px; }
       .nav { padding: 0 20px; }
       .nav-links { gap: 16px; }
       .container { padding: 0 20px; }
-      .day-tabs { gap: 6px; }
-      .day-tab { padding: 8px 14px; font-size: 0.75rem; }
+      .page-header h1 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+      .day-tabs {
+        gap: 6px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+        padding: 16px 16px;
+      }
+      .day-tab { padding: 7px 12px; font-size: 0.72rem; flex-shrink: 0; }
+      .timeline-title { font-size: 0.92rem; }
+
+      .bottom-tabs {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 56px;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(10, 61, 98, 0.08);
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+
+      .bottom-tabs a {
+        text-decoration: none;
+        font-size: 0.68rem;
+        font-weight: 500;
+        color: var(--text-light);
+        text-align: center;
+      }
+
+      .bottom-tabs a.active {
+        color: var(--ocean-deep);
+        font-weight: 700;
+      }
     }
   </style>
 </head>
@@ -547,6 +592,15 @@
       </div>
     </section>
 
+  </div>
+
+  <div class="bottom-tabs">
+    <a href="index.html">메인</a>
+    <a href="#day1">D1</a>
+    <a href="#day2">D2</a>
+    <a href="#day3">D3</a>
+    <a href="#day4">D4</a>
+    <a href="#day5">D5</a>
   </div>
 
   <footer class="footer">

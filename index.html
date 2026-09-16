@@ -762,10 +762,54 @@
       margin-top: 2px;
     }
 
+    /* ─── BOTTOM TAB BAR ─── */
+    .bottom-tab-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(10, 61, 98, 0.1);
+      justify-content: space-around;
+      align-items: center;
+      height: 60px;
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    .bottom-tab-bar a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      text-decoration: none;
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--ocean-deep);
+      letter-spacing: 0.02em;
+      padding: 6px 0;
+      flex: 1;
+      text-align: center;
+    }
+
+    .bottom-tab-bar a .tab-icon {
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .bottom-tab-bar a:active {
+      color: var(--coral);
+    }
+
     /* ─── MOBILE ─── */
     @media (max-width: 768px) {
       .nav { padding: 0 20px; }
       .nav-links { display: none; }
+      .bottom-tab-bar { display: flex; }
+      body { padding-bottom: 72px; }
       .container { padding: 0 20px; }
       .chapter { padding: 64px 0; }
       .flight-grid, .info-row, .resort-grid, .etc-grid { grid-template-columns: 1fr !important; }
@@ -775,10 +819,14 @@
       .resort-summary, .opinion-box { padding: 32px; }
       .activity-cards { grid-template-columns: 1fr; }
       .map-grid { grid-template-columns: 1fr; }
+      .hero { min-height: 500px; }
+      #route-map, #food-map, #resort-map { height: 300px !important; }
+      .map-card iframe { height: 250px; }
     }
 
     @media (max-width: 480px) {
       .resort-rec-grid { grid-template-columns: 1fr; }
+      .flight-city { font-size: 1.6rem; }
     }
 
     /* ─── LOCK SCREEN ─── */
@@ -988,6 +1036,10 @@
         opacity: 0;
         transition: transform 0.8s ease, opacity 0.8s ease;
       }
+      .pin-btn { width: 60px; height: 60px; font-size: 1.3rem; }
+      .pin-pad { gap: 12px; }
+      .lock-title { font-size: 1.1rem; }
+      .lock-icon { font-size: 2rem; }
     }
   </style>
 </head>
@@ -1288,6 +1340,15 @@
       </div>
     </div>
   </section>
+
+  <!-- BOTTOM TAB BAR (mobile only) -->
+  <nav class="bottom-tab-bar">
+    <a href="index.html#"><span class="tab-icon">&#x1F3E0;</span>메인</a>
+    <a href="#chapter1"><span class="tab-icon">&#x2708;</span>개요</a>
+    <a href="#chapter2"><span class="tab-icon">&#x1F3C4;</span>액티비티</a>
+    <a href="#chapter3"><span class="tab-icon">&#x1F3E8;</span>숙소</a>
+    <a href="schedule.html"><span class="tab-icon">&#x1F4C5;</span>일정표</a>
+  </nav>
 
   <!-- FOOTER -->
   <footer class="footer">
