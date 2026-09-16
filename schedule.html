@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>일자별 일정 — 보라카이 with 강남수</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css">
+  <style>
+    :root {
+      --sand: #f5e6d3;
+      --sand-light: #faf3eb;
+      --ocean-deep: #0a3d62;
+      --ocean: #1b6ca8;
+      --emerald: #0d9b76;
+      --emerald-light: #1dd1a1;
+      --coral: #e17055;
+      --coral-light: #fab1a0;
+      --sunset-orange: #f39c12;
+      --dark: #1a1a2e;
+      --text: #2d3436;
+      --text-light: #636e72;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+    body {
+      font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif;
+      color: var(--text);
+      background: var(--sand-light);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(245, 230, 211, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(10, 61, 98, 0.08);
+    }
+
+    .nav-logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ocean-deep);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--ocean-deep);
+      letter-spacing: 0.06em;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--coral);
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 120px 0 60px;
+      text-align: center;
+      background: linear-gradient(165deg, #0a3d62 0%, #1b6ca8 50%, #1dd1a1 100%);
+    }
+
+    .page-header h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .page-header p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* DAY TABS */
+    .day-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 24px 20px;
+      background: var(--white);
+      border-bottom: 1px solid rgba(10, 61, 98, 0.06);
+      position: sticky;
+      top: 64px;
+      z-index: 100;
+      flex-wrap: wrap;
+    }
+
+    .day-tab {
+      padding: 10px 20px;
+      border-radius: 24px;
+      border: 1.5px solid rgba(10, 61, 98, 0.1);
+      background: transparent;
+      font-family: 'Pretendard Variable', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .day-tab:hover {
+      border-color: var(--ocean);
+      color: var(--ocean);
+    }
+
+    .day-tab.active {
+      background: var(--ocean-deep);
+      color: var(--white);
+      border-color: var(--ocean-deep);
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* DAY SECTION */
+    .day-section {
+      padding: 60px 0;
+      border-bottom: 1px solid rgba(10, 61, 98, 0.06);
+    }
+
+    .day-section:last-child {
+      border-bottom: none;
+    }
+
+    .day-label {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .day-label--1 { background: rgba(10, 61, 98, 0.08); color: var(--ocean-deep); }
+    .day-label--2 { background: rgba(13, 155, 118, 0.1); color: var(--emerald); }
+    .day-label--3 { background: rgba(27, 108, 168, 0.1); color: var(--ocean); }
+    .day-label--4 { background: rgba(243, 156, 18, 0.1); color: var(--sunset-orange); }
+    .day-label--5 { background: rgba(225, 112, 85, 0.1); color: var(--coral); }
+
+    .day-title {
+      font-family: 'Pretendard Variable', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--ocean-deep);
+      margin-bottom: 8px;
+    }
+
+    .day-date {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 32px;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: rgba(10, 61, 98, 0.08);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 32px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -28px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2.5px solid var(--ocean);
+      background: var(--white);
+    }
+
+    .timeline-dot--highlight {
+      border-color: var(--coral);
+      background: var(--coral);
+    }
+
+    .timeline-dot--meal {
+      border-color: var(--emerald);
+      background: var(--emerald);
+    }
+
+    .timeline-time {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-light);
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .timeline-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ocean-deep);
+      margin-bottom: 4px;
+    }
+
+    .timeline-desc {
+      font-size: 0.84rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    .timeline-tag {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 0.68rem;
+      font-weight: 600;
+    }
+
+    .tag--move { background: rgba(10, 61, 98, 0.06); color: var(--ocean-deep); }
+    .tag--activity { background: rgba(13, 155, 118, 0.08); color: var(--emerald); }
+    .tag--food { background: rgba(243, 156, 18, 0.08); color: var(--sunset-orange); }
+    .tag--free { background: rgba(253, 121, 168, 0.08); color: #e84393; }
+    .tag--tbd { background: rgba(99, 110, 114, 0.08); color: var(--text-light); }
+
+    /* FOOTER */
+    .footer {
+      background: var(--dark);
+      padding: 48px 0;
+      text-align: center;
+    }
+
+    .footer-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--sand);
+      margin-bottom: 8px;
+    }
+
+    .footer-sub {
+      font-size: 0.78rem;
+      color: rgba(245, 230, 211, 0.4);
+      letter-spacing: 0.1em;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 0.82rem;
+      color: rgba(245, 230, 211, 0.6);
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      color: var(--sand);
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .nav { padding: 0 20px; }
+      .nav-links { gap: 16px; }
+      .container { padding: 0 20px; }
+      .day-tabs { gap: 6px; }
+      .day-tab { padding: 8px 14px; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">BORACAY '26</a>
+    <ul class="nav-links">
+      <li><a href="index.html">메인</a></li>
+      <li><a href="schedule.html" class="active">일정표</a></li>
+    </ul>
+  </nav>
+
+  <header class="page-header">
+    <h1>Daily Schedule</h1>
+    <p>2026. 11. 28 — 12. 02 / 4박 5일</p>
+  </header>
+
+  <div class="day-tabs">
+    <button class="day-tab active" onclick="scrollToDay('day1')">Day 1 · 11/28</button>
+    <button class="day-tab" onclick="scrollToDay('day2')">Day 2 · 11/29</button>
+    <button class="day-tab" onclick="scrollToDay('day3')">Day 3 · 11/30</button>
+    <button class="day-tab" onclick="scrollToDay('day4')">Day 4 · 12/01</button>
+    <button class="day-tab" onclick="scrollToDay('day5')">Day 5 · 12/02</button>
+  </div>
+
+  <div class="container">
+
+    <!-- DAY 1 -->
+    <section class="day-section" id="day1">
+      <span class="day-label day-label--1">Day 01</span>
+      <h2 class="day-title">보라카이 도착</h2>
+      <div class="day-date">11월 28일 토요일</div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-time">09:20</div>
+          <div class="timeline-title">인천공항 출발</div>
+          <div class="timeline-desc">트리니티항공 ICN → KLO</div>
+          <span class="timeline-tag tag--move">이동</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-time">12:55</div>
+          <div class="timeline-title">칼리보 공항 도착</div>
+          <div class="timeline-desc">보자무싸 픽업 서비스 이용</div>
+          <span class="timeline-tag tag--move">이동</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-time">13:00 ~ 15:00</div>
+          <div class="timeline-title">칼리보 → 카티클란 항구 → 보라카이</div>
+          <div class="timeline-desc">차량 약 1.5시간 + 보트 약 10분 + 숙소 이동</div>
+          <span class="timeline-tag tag--move">이동</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot--highlight"></div>
+          <div class="timeline-time">15:00 ~</div>
+          <div class="timeline-title">헤난 팜비치 체크인</div>
+          <div class="timeline-desc">짐 정리 + 리조트 둘러보기</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot--meal"></div>
+          <div class="timeline-time">저녁</div>
+          <div class="timeline-title">디몰 근처 저녁 식사</div>
+          <div class="timeline-desc">도착 첫 끼, 디몰 탐방</div>
+          <span class="timeline-tag tag--food">식사</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-time">밤</div>
+          <div class="timeline-title">화이트비치 야경 산책</div>
+          <div class="timeline-desc">첫날 밤 분위기 즐기기</div>
+          <span class="timeline-tag tag--free">자유</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DAY 2 -->
+    <section class="day-section" id="day2">
+      <span class="day-label day-label--2">Day 02</span>
+      <h2 class="day-title">호핑 투어 + 자유 시간</h2>
+      <div class="day-date">11월 29일 일요일</div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot--meal"></div>
+          <div class="timeline-time">오전</div>
+          <div class="timeline-title">아침 식사</div>
+          <div class="timeline-desc">리조트 조식 또는 근처 식당</div>
+          <span class="timeline-tag tag--food">식사</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot--highlight"></div>
+          <div class="timeline-time">오전 ~ 오후</div>
+          <div class="timeline-title">호핑 투어</div>
+          <div class="timeline-desc">에스보라카이 / 인당 $60 (약 8만원)<br>픽업·드랍·식사 포함 / 오전 시작 ~ 오후 종료</div>
+          <span class="timeline-tag tag--activity">액티비티</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-time">오후</div>
+          <div class="timeline-title">리조트 자유 시간</div>
+          <div class="timeline-desc">인피니트 풀 + 해변 휴식</div>
+          <span class="timeline-tag tag--free">자유</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot--meal"></div>
+          <div class="timeline-time">저녁</div>
+          <div class="timeline-title">사바비 레스토랑</div>
+          <div class="timeline-desc">현지 로컬 맛집</div>
+          <span class="timeline-tag tag--food">식사</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DAY 3 -->
+    <section class="day-section" id="day3">
+      <span class="day-label day-label--3">Day 03</span>
+      <h2 class="day-title">고래상어 투어 + 선셋 세일링</h2>
+      <div class="day-date">11월 30일 월요일</div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot--highlight"></div>
+          <div class="timeline-time">오전 ~ 점심</div>
+          <div class="timeline-title">고래상어 투어</div>
+          <div class="timeline-desc">보자무싸 / 인당 87,500원<br>차량 → 배 → 차량 이동 / 점심에 투어 종료<br>※ 스노쿨링·식사·픽드랍 미포함</div>
+          <span class="timeline-tag tag--activity">액티비티</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot--meal"></div>
+          <div class="timeline-time">점심 ~</div>
+          <div class="timeline-title">점심 식사 + 휴식</div>
+          <div class="timeline-desc">투어 후 식사 및 리조트 휴식</div>
+          <span class="timeline-tag tag--food">식사</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot--highlight"></div>
+          <div class="timeline-time">17:00 ~ 17:30</div>
+          <div class="timeline-title">선셋 세일링</div>
+          <div class="timeline-desc">드보라 / 해질녘 타이밍 출항</div>
+          <span class="timeline-tag tag--activity">액티비티</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot--meal"></div>
+          <div class="timeline-time">저녁</div>
+          <div class="timeline-title">저녁 식사</div>
+          <div class="timeline-desc">TBD</div>
+          <span class="timeline-tag tag--tbd">미정</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DAY 4 -->
+    <section class="day-section" id="day4">
+      <span class="day-label day-label--4">Day 04</span>
+      <h2 class="day-title">자유 일정 + 마사지</h2>
+      <div class="day-date">12월 1일 화요일</div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot--meal"></div>
+          <div class="timeline-time">오전</div>
+          <div class="timeline-title">느긋한 아침</div>
+          <div class="timeline-desc">조식 + 해변 산책</div>
+          <span class="timeline-tag tag--free">자유</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-time">낮</div>
+          <div class="timeline-title">자유 시간</div>
+          <div class="timeline-desc">화이트비치 / 수영장 / 디몰 쇼핑 등</div>
+          <span class="timeline-tag tag--free">자유</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot--highlight"></div>
+          <div class="timeline-time">오후</div>
+          <div class="timeline-title">마사지</div>
+          <div class="timeline-desc">TBD</div>
+          <span class="timeline-tag tag--tbd">미정</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot--meal"></div>
+          <div class="timeline-time">저녁</div>
+          <div class="timeline-title">마지막 밤 저녁 식사</div>
+          <div class="timeline-desc">TBD</div>
+          <span class="timeline-tag tag--tbd">미정</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-time">밤</div>
+          <div class="timeline-title">마지막 밤 보라카이</div>
+          <div class="timeline-desc">짐 정리</div>
+          <span class="timeline-tag tag--free">자유</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DAY 5 -->
+    <section class="day-section" id="day5">
+      <span class="day-label day-label--5">Day 05</span>
+      <h2 class="day-title">귀국</h2>
+      <div class="day-date">12월 2일 수요일</div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-time">오전</div>
+          <div class="timeline-title">체크아웃</div>
+          <div class="timeline-desc">헤난 팜비치 체크아웃 + 공항 이동 준비</div>
+          <span class="timeline-tag tag--move">이동</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-time">오전 ~ 낮</div>
+          <div class="timeline-title">보라카이 → 카티클란 → 칼리보 공항</div>
+          <div class="timeline-desc">보트 + 차량 이동 약 2시간</div>
+          <span class="timeline-tag tag--move">이동</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot--highlight"></div>
+          <div class="timeline-time">13:55</div>
+          <div class="timeline-title">칼리보 공항 출발</div>
+          <div class="timeline-desc">트리니티항공 KLO → ICN</div>
+          <span class="timeline-tag tag--move">이동</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-time">19:05</div>
+          <div class="timeline-title">인천공항 도착</div>
+          <div class="timeline-desc">수고하셨습니다!</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-title">See you in Boracay</div>
+    <div class="footer-sub">BORACAY WITH GANGNAMSU</div>
+    <a href="index.html" class="back-link">← 메인으로 돌아가기</a>
+  </footer>
+
+  <script>
+    function scrollToDay(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 탭 활성화
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var idx = entry.target.id.replace('day', '');
+          document.querySelectorAll('.day-tab').forEach(function(t, i) {
+            t.classList.toggle('active', i === parseInt(idx) - 1);
+          });
+        }
+      });
+    }, { rootMargin: '-120px 0px -60% 0px' });
+
+    document.querySelectorAll('.day-section').forEach(function(s) {
+      observer.observe(s);
+    });
+  </script>
+
+</body>
+</html>
