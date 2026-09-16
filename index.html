@@ -1072,14 +1072,14 @@
         opacity: 0;
       }
       3% { opacity: 1; }
-      45% {
-        top: 38%;
+      40% {
+        top: 45%;
         left: 50%;
         transform: translate(-50%, -50%) scale(1.1);
         opacity: 1;
       }
-      55% {
-        top: 40%;
+      52% {
+        top: 45%;
         left: 50%;
         transform: translate(-50%, -50%) scale(1.1);
         opacity: 1;
@@ -1114,39 +1114,22 @@
 
     .parachute-anim.phase-fall {
       display: block;
-      animation: parachuteArc 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      animation: parachuteArc 3.5s linear forwards;
     }
 
     @keyframes parachuteArc {
       0% {
         top: -15%;
-        right: -10%;
-        transform: scale(0.3) rotate(10deg);
+        left: 10%;
+        transform: scale(0.4) rotate(5deg);
         opacity: 0;
       }
-      10% {
-        opacity: 1;
-      }
-      25% {
-        top: 10%;
-        right: 5%;
-        transform: scale(0.6) rotate(-8deg);
-      }
-      50% {
-        top: 35%;
-        right: 15%;
-        transform: scale(1) rotate(6deg);
-      }
-      75% {
-        top: 60%;
-        right: 8%;
-        transform: scale(0.8) rotate(-4deg);
-      }
+      5% { opacity: 1; }
       100% {
-        top: 120%;
-        right: 12%;
-        transform: scale(0.5) rotate(0deg);
-        opacity: 0.8;
+        top: 110%;
+        left: 18%;
+        transform: scale(0.7) rotate(-3deg);
+        opacity: 1;
       }
     }
   </style>
