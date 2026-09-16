@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Pretendard+Variable&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <style>
     :root {
       --sand: #f5e6d3;
@@ -1337,7 +1337,7 @@
     // Helper: create a Leaflet map with pins
     function createMap(id, center, zoom, pins) {
       var map = L.map(id).setView(center, zoom);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap',
         maxZoom: 19
       }).addTo(map);
@@ -1356,11 +1356,22 @@
     }
 
     // Ch1: 이동 경로
-    createMap('route-map', [11.7, 122.0], 10, [
+    var routeMap = createMap('route-map', [11.82, 122.15], 10, [
       { lat: 11.6796, lng: 122.3762, name: '칼리보 국제공항 (KLO)', desc: '인천에서 약 4시간', color: '#e17055' },
-      { lat: 11.9246, lng: 121.9536, name: '카티클란 항구', desc: '칼리보에서 약 1.5시간', color: '#f39c12' },
-      { lat: 11.9674, lng: 121.9250, name: '보라카이 섬', desc: '항구에서 보트 10분', color: '#0d9b76' }
+      { lat: 11.9246, lng: 121.9536, name: '카티클란 항구', desc: '칼리보에서 차량 약 1.5시간', color: '#f39c12' },
+      { lat: 11.9658, lng: 121.9250, name: '헤난 팜비치 (숙소)', desc: '항구에서 보트 10분 + 이동', color: '#0d9b76' }
     ]);
+    // 경로선
+    L.polyline([
+      [11.6796, 122.3762],
+      [11.9246, 121.9536]
+    ], { color: '#e17055', weight: 3, dashArray: '8, 8', opacity: 0.7 }).addTo(routeMap)
+      .bindPopup('<span style="font-size:12px;">차량 이동 약 1.5시간</span>');
+    L.polyline([
+      [11.9246, 121.9536],
+      [11.9658, 121.9250]
+    ], { color: '#1b6ca8', weight: 3, dashArray: '8, 8', opacity: 0.7 }).addTo(routeMap)
+      .bindPopup('<span style="font-size:12px;">보트 약 10분 + 육로 이동</span>');
 
     // Ch2: 맛집
     createMap('food-map', [11.9640, 121.9248], 16, [
