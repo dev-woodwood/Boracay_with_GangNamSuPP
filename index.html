@@ -1041,7 +1041,7 @@
       .lock-subtitle { font-size: 0.75rem; }
       .lock-icon { font-size: 1.8rem; }
       .pin-dot { width: 12px; height: 12px; }
-      .airplane-anim img { max-width: 180px; }
+      .airplane-anim { width: 180px; height: 180px; margin-left: -90px; margin-top: -90px; }
       .parachute-anim img { max-width: 120px; }
     }
 
@@ -1051,12 +1051,16 @@
       z-index: 10002;
       pointer-events: none;
       display: none;
+      width: 280px;
+      height: 280px;
+      margin-left: -140px;
+      margin-top: -140px;
     }
 
     .airplane-anim img {
-      max-width: 280px;
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: contain;
     }
 
     .airplane-anim.playing {
@@ -1068,32 +1072,32 @@
       0% {
         top: 50%;
         left: 105%;
-        transform: translate(-50%, -50%) scale(0.15);
+        transform: scale(0.15);
         opacity: 0;
       }
       3% { opacity: 1; }
       40% {
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%) scale(1.1);
+        transform: scale(1.1);
         opacity: 1;
       }
       52% {
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%) scale(1.1);
+        transform: scale(1.1);
         opacity: 1;
       }
       97% {
         top: 40%;
         left: -20%;
-        transform: translate(-50%, -50%) scale(0.2);
+        transform: scale(0.2);
         opacity: 1;
       }
       100% {
         top: 38%;
         left: -25%;
-        transform: translate(-50%, -50%) scale(0.15);
+        transform: scale(0.15);
         opacity: 0;
       }
     }
