@@ -768,7 +768,7 @@
       .nav-links { display: none; }
       .container { padding: 0 20px; }
       .chapter { padding: 64px 0; }
-      .flight-grid, .info-row, .resort-grid, .etc-grid { grid-template-columns: 1fr; }
+      .flight-grid, .info-row, .resort-grid, .etc-grid { grid-template-columns: 1fr !important; }
       .resort-rec-grid { grid-template-columns: 1fr 1fr; }
       .flight-city { font-size: 2rem; }
       .flight-card { padding: 28px; }
@@ -1126,13 +1126,13 @@
           <div class="info-icon">&#x1F4B1;</div>
           <div class="info-title">환율</div>
           <div class="info-value">1 PHP = 21.45원</div>
-          <div class="info-sub">페소 x 25 = 대략 원화</div>
+          <div class="info-sub">디몰에서 환전 추천 (달러로 가져가기)</div>
         </div>
         <div class="info-card">
           <div class="info-icon">&#x1F4B0;</div>
           <div class="info-title">공동 경비</div>
           <div class="info-value">~140만원</div>
-          <div class="info-sub">11월 초 예상 수금액</div>
+          <div class="info-sub">팁 100~300페소 별도</div>
         </div>
         <div class="info-card">
           <div class="info-icon">&#x23F1;</div>
@@ -1174,8 +1174,9 @@
           <div class="activity-card">
             <span class="activity-card-badge badge--pickup">Transfer</span>
             <div class="activity-card-name">공항 픽업 서비스</div>
-            <div class="activity-card-vendor">보자무싸</div>
-            <div class="activity-card-price">57,400원 <small>/ 인</small></div>
+            <div class="activity-card-vendor">에스보라카이</div>
+            <div class="activity-card-price">$45 <small>/ 인 (약 62,000원)</small></div>
+            <div class="activity-card-desc">픽업 예약 시 선셋세일링 or 마사지 1회 무료</div>
           </div>
         </div>
       </div>
@@ -1186,8 +1187,9 @@
           <div class="activity-card">
             <span class="activity-card-badge badge--sailing">Sailing</span>
             <div class="activity-card-name">선셋 세일링</div>
-            <div class="activity-card-vendor">드보라</div>
-            <div class="activity-card-desc">추천 시간: 오후 5시 ~ 5시 30분<br>해질녘 타이밍에 맞춰 출항</div>
+            <div class="activity-card-vendor">에스보라카이</div>
+            <div class="activity-card-price">$35 <small>/ 인 (약 47,000원)</small></div>
+            <div class="activity-card-desc">오후 4시 30분 ~ 5시 출항 / 스타벅스 앞 집합</div>
           </div>
           <div class="activity-card">
             <span class="activity-card-badge badge--hopping">Hopping</span>
@@ -1195,10 +1197,10 @@
             <div class="activity-card-vendor">에스보라카이</div>
             <div class="activity-card-price">$60 <small>/ 인 (약 8만원)</small></div>
             <div class="pros-cons">
-              <div class="pro">픽업/드랍, 식사 포함 금액</div>
-              <div class="con">고래상어 없음</div>
+              <div class="pro">픽업/드랍, 식사 포함 (밥 후기 좋음)</div>
               <div class="con">오전 시작 ~ 오후 종료, 시간 소요 큼</div>
             </div>
+            <div class="activity-card-desc">크리스탈 코브섬 입장료 300페소 + 매너팁 100페소 (인당)</div>
           </div>
           <div class="activity-card">
             <span class="activity-card-badge badge--whale">Whale Shark</span>
@@ -1216,15 +1218,30 @@
 
       <div class="activity-section">
         <h3 class="activity-section-title"><span class="icon">&#x1F374;</span> 맛집 & 마사지</h3>
-        <div class="etc-grid">
+        <div class="etc-grid" style="grid-template-columns:repeat(3,1fr);">
           <div class="etc-card">
             <div class="etc-card-title">사바비 레스토랑</div>
-            <div class="etc-card-desc">현지 로컬 맛집</div>
+            <div class="etc-card-desc">현지 로컬 씨푸드 / 버터갈릭·칠리새우 + 마늘밥 + 깡꽁 추천</div>
+          </div>
+          <div class="etc-card">
+            <div class="etc-card-title">졸리비</div>
+            <div class="etc-card-desc">필리핀 국민 패스트푸드, 간단하게 먹기 좋음</div>
+          </div>
+          <div class="etc-card">
+            <div class="etc-card-title">게리스 그릴</div>
+            <div class="etc-card-desc">씨푸드 맛집, 가격대 높은 편</div>
+          </div>
+          <div class="etc-card">
+            <div class="etc-card-title">아일랜드치킨이나살</div>
+            <div class="etc-card-desc">치킨/바베큐 인기 맛집</div>
+          </div>
+          <div class="etc-card">
+            <div class="etc-card-title">타이푸드 레스토랑</div>
+            <div class="etc-card-desc">태국 음식점, 얼큰한 쌀국수 강추</div>
           </div>
           <div class="etc-card">
             <div class="etc-card-title">마사지샵</div>
-            <div class="etc-card-desc">추후 결정</div>
-            <span class="tbd">TBD</span>
+            <div class="etc-card-desc">헤난 리조트 내 마사지사 호출 가능</div>
           </div>
         </div>
       </div>
@@ -1244,20 +1261,19 @@
     <div class="container">
       <div class="chapter-header">
         <div class="chapter-number">Chapter 03</div>
-        <h2 class="chapter-title">우리 숙소<br><em>Henann Palm Beach</em></h2>
+        <h2 class="chapter-title">우리 숙소<br><em>Henann Crystal Sands</em></h2>
         <div class="chapter-line"></div>
       </div>
 
       <div class="resort-card resort-card--pick" style="max-width:680px;margin:0 auto 48px;">
-        <div class="resort-name" style="font-size:1.4rem;">헤난 팜비치 리조트</div>
+        <div class="resort-name" style="font-size:1.4rem;">헤난 크리스탈 샌즈 리조트</div>
         <ul class="resort-features">
-          <li>비교적 최근에 지어짐</li>
-          <li>크리스탈 샌즈 다음 화이트비치 인피니트 풀 보유</li>
-          <li>위치 / 수영장 / 해변 균형 Good</li>
-          <li>크리스탈 샌즈 대안으로 최적</li>
-          <li>해변 다이렉트 접근</li>
+          <li>헤난 리조트 중 가장 비쌈</li>
+          <li>화이트 비치가 보이는 인피니트 풀</li>
+          <li>죽여준다는 수영장 뷰</li>
         </ul>
         <span class="resort-tag" style="background:var(--emerald);color:#fff;">CONFIRMED</span>
+        <span class="resort-tag" style="margin-left:8px;">Premium</span>
       </div>
 
       <div class="map-section">
@@ -1265,7 +1281,7 @@
         <div class="map-card">
           <div id="resort-map" style="width:100%;height:480px;"></div>
           <div class="map-card-label">
-            헤난 팜비치 + 디몰 · 화이트비치 · 사바비 레스토랑
+            헤난 크리스탈 샌즈 + 디몰 · 화이트비치 · 사바비 레스토랑
             <small>핀을 클릭하면 상세 정보를 볼 수 있습니다</small>
           </div>
         </div>
@@ -1360,7 +1376,7 @@
     var routeMap = createMap('route-map', [11.82, 122.15], 10, [
       { lat: 11.6796, lng: 122.3762, name: '칼리보 국제공항 (KLO)', desc: '인천에서 약 4시간', color: '#e17055' },
       { lat: 11.9246, lng: 121.9536, name: '카티클란 항구', desc: '칼리보에서 차량 약 1.5시간', color: '#f39c12' },
-      { lat: 11.9658, lng: 121.9250, name: '헤난 팜비치 (숙소)', desc: '항구에서 보트 10분 + 이동', color: '#0d9b76' }
+      { lat: 11.9672, lng: 121.9251, name: '헤난 크리스탈 샌즈 (숙소)', desc: '항구에서 보트 10분 + 이동', color: '#0d9b76' }
     ]);
     // 경로선
     L.polyline([
@@ -1372,9 +1388,9 @@
     L.polyline([
       [11.9246, 121.9536],
       [11.9450, 121.9400],
-      [11.9658, 121.9250]
+      [11.9672, 121.9251]
     ], { color: '#1b6ca8', weight: 5, opacity: 0.9 }).addTo(routeMap)
-      .bindPopup('<strong>구간 2</strong><br>카티클란 항구 → 헤난 팜비치<br>보트 10분 + 이동');
+      .bindPopup('<strong>구간 2</strong><br>카티클란 항구 → 헤난 크리스탈 샌즈<br>보트 10분 + 이동');
 
     // Ch2: 맛집
     createMap('food-map', [11.9640, 121.9248], 16, [
@@ -1383,7 +1399,7 @@
 
     // Ch3: 숙소 & 주요 스팟
     createMap('resort-map', [11.9640, 121.9248], 15, [
-      { lat: 11.9658, lng: 121.9250, name: '헤난 팜비치', desc: 'CONFIRMED · 우리 숙소', color: '#0d9b76' },
+      { lat: 11.9672, lng: 121.9251, name: '헤난 크리스탈 샌즈', desc: 'CONFIRMED · 우리 숙소', color: '#0d9b76' },
       { lat: 11.9648, lng: 121.9253, name: '디몰 (D\'Mall)', desc: '쇼핑/식당 거리', color: '#1b6ca8' },
       { lat: 11.9620, lng: 121.9235, name: '화이트 비치', desc: '보라카이 대표 해변', color: '#1b6ca8' },
       { lat: 11.9640, lng: 121.9248, name: '사바비 레스토랑', desc: '현지 로컬 맛집', color: '#f39c12' }
