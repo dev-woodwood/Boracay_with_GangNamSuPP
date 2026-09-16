@@ -1496,12 +1496,15 @@
                 var plane = document.getElementById('airplane-anim');
                 plane.classList.add('playing');
 
-                // 3) 비행기가 중앙 머무는 타이밍(48%)에 문 열기 + 낙하산
-                // 3.5s * 0.50 = 1.75s
+                // 3) 비행기가 중앙 머무는 타이밍에 문 열기
                 setTimeout(function() {
                   lock.classList.add('unlocked');
-                  document.getElementById('parachute-anim').classList.add('phase-fall');
                 }, 1750);
+
+                // 4) 비행기가 들어가기 시작할 때 낙하산
+                setTimeout(function() {
+                  document.getElementById('parachute-anim').classList.add('phase-fall');
+                }, 2100);
 
                 // 4) 애니메이션 끝나면 정리
                 setTimeout(function() {
