@@ -1028,17 +1028,11 @@
       .lock-content {
         transform: translateX(0);
       }
-      .door--right {
-        display: none;
-      }
       .door--left {
-        width: 100%;
-        transform-origin: center center;
+        width: 50%;
       }
-      .lock-overlay.unlocked .door--left {
-        transform: scale(1.1);
-        opacity: 0;
-        transition: transform 0.8s ease, opacity 0.8s ease;
+      .door--right {
+        width: 50%;
       }
       .pin-btn { width: 56px; height: 56px; font-size: 1.2rem; }
       .pin-pad { gap: 10px; }
@@ -1055,10 +1049,6 @@
     .airplane-anim {
       position: fixed;
       z-index: 10002;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.1);
-      opacity: 0;
       pointer-events: none;
       display: none;
     }
@@ -1071,37 +1061,60 @@
 
     .airplane-anim.phase-enter {
       display: block;
-      animation: planeEnter 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation: planeArc 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     }
 
     .airplane-anim.phase-exit {
       display: block;
-      animation: planeExit 1s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+      animation: planeInto 1.2s cubic-bezier(0.55, 0, 1, 0.45) forwards;
     }
 
-    @keyframes planeEnter {
+    @keyframes planeArc {
       0% {
+        top: 60%;
+        left: 110%;
+        transform: scale(0.2) rotate(-10deg);
         opacity: 0;
-        transform: translate(-50%, 100%) scale(0.15);
       }
-      60% {
+      10% {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1.05);
+      }
+      40% {
+        top: 25%;
+        left: 65%;
+        transform: scale(0.7) rotate(-5deg);
+      }
+      70% {
+        top: 35%;
+        left: 40%;
+        transform: scale(1.15) rotate(3deg);
       }
       100% {
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
       }
     }
 
-    @keyframes planeExit {
+    @keyframes planeInto {
       0% {
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
+      }
+      40% {
+        top: 42%;
+        left: 48%;
+        transform: translate(-50%, -50%) scale(0.7) rotate(2deg);
+        opacity: 1;
       }
       100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.2);
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.05) rotate(0deg);
+        opacity: 1;
       }
     }
 
@@ -1109,10 +1122,6 @@
     .parachute-anim {
       position: fixed;
       z-index: 10002;
-      left: 75%;
-      top: -30%;
-      transform: translateX(-50%);
-      opacity: 0;
       pointer-events: none;
       display: none;
     }
@@ -1125,31 +1134,39 @@
 
     .parachute-anim.phase-fall {
       display: block;
-      animation: parachuteFall 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      animation: parachuteArc 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     }
 
-    @keyframes parachuteFall {
+    @keyframes parachuteArc {
       0% {
+        top: -15%;
+        right: -10%;
+        transform: scale(0.3) rotate(10deg);
         opacity: 0;
-        top: -20%;
-        transform: translateX(-50%) rotate(-8deg);
       }
-      15% {
+      10% {
         opacity: 1;
       }
-      30% {
-        transform: translateX(-40%) rotate(5deg);
+      25% {
+        top: 10%;
+        right: 5%;
+        transform: scale(0.6) rotate(-8deg);
       }
       50% {
-        transform: translateX(-60%) rotate(-5deg);
+        top: 35%;
+        right: 15%;
+        transform: scale(1) rotate(6deg);
       }
-      70% {
-        transform: translateX(-45%) rotate(3deg);
+      75% {
+        top: 60%;
+        right: 8%;
+        transform: scale(0.8) rotate(-4deg);
       }
       100% {
-        opacity: 1;
-        top: 110%;
-        transform: translateX(-50%) rotate(0deg);
+        top: 120%;
+        right: 12%;
+        transform: scale(0.5) rotate(0deg);
+        opacity: 0.8;
       }
     }
   </style>
